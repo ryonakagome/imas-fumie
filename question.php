@@ -30,30 +30,32 @@
     if (isset($_SESSION['questionno']) == '') {
         $_SESSION['questionno'] = 1;
         $_SESSION['game'] = 0;
+        $_SESSION['deremas'] = 0;
+        $_SESSION['mirisita'] = 0;
     } else {
 
     }
     $game = $_SESSION['game'];
-    if ($game = 0) {
+    if ($game != 1) {
         $idol = rand(1, 188);
-        
+        $_SESSION['idol'] = $idol;
         $sql = mysqli_query($db_link, "SELECT idolid, idolname FROM idols_deremas WHERE idolid = '$idol'");
         $result = mysqli_fetch_assoc($sql);
 
-        print('<h4>第'.$_SESSION['questionno'].'問');
+        print('<h4>第'.$_SESSION['questionno'].'問');
         print('<center>');
         print('<img src="idols-deremas/'.$idol.'.png">');
         print('<h3>'.$result['idolname'].'を知っていますか<br>');
         print('<a href="know.php">知ってる</a>&nbsp;<a href="dontknow.php">知らない</a>');
-    } else {
+    } elseif ($game != 0) {
         $idol = rand(1, 53);
         $_SESSION['idol'] = $idol;
         $sql = mysqli_query($db_link, "SELECT idolid, idolname FROM idols_mirisita WHERE idolid = '$idol'");
         $result = mysqli_fetch_assoc($sql);
 
-        print('<h4>第'.$_SESSION['questionno'].'問');
+        print('<h4>第'.$_SESSION['questionno'].'問');
         print('<center>');
-        print('<img src="idols-deremas/'.$idol.'.png">');
+        print('<img src="idols-mirisita/'.$idol.'.png">');
         print('<h3>'.$result['idolname'].'を知っていますか<br>');
         print('<a href="know.php">知ってる</a>&nbsp;<a href="dontknow.php">知らない</a>');
     }

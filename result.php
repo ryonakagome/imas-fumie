@@ -35,10 +35,12 @@
         print("<center><h2>判定</h2>");
         print("<h3>あなたはミリシタPですね？</h3>");
         print('<a href="https://twitter.com/share" class="twitter-share-button" data-text="私はミリシタPと判定されました。">Tweet</a>');
-    } else {
+    } elseif (isset($_SESSION['deremas']) == isset($_SESSION['mirisita'])) {
         print("<center><h2>判定</h2>");
         print("<h3>あなたは中間層ですね？</h3>");
         print('<a href="https://twitter.com/share" class="twitter-share-button" data-text="私は中間層と判定されました。">Tweet</a>');
+    } else {
+        print('<script>alert("判別不可能");</script>');
     }
     session_destroy();
 ?>

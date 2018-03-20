@@ -3,10 +3,10 @@
     require_once('config.php');
     $game = $_SESSION['game'];
     $idol = $_SESSION['idol'];
-    if ($game = 0) {
-        $_SESSION['game'] = 1;
-    } else {
+    if ($game != 0) {
         $_SESSION['game'] = 0;
+    } else {
+        $_SESSION['game'] = 1;
     }
     $qno = $_SESSION['questionno'];
     if($qno >= 50) {
